@@ -11,9 +11,19 @@ class LimitedDict(MutableMapping):
         self._at_max_length = False
 
     def __setitem__(self, key, value):
-        index = bisect(self._values, value)
-        self._values.insert(index, value)
-        self._keys.insert(index, key)
+        try:
+            index = self._keys.index(key)
+            exists = True
+        except:
+            index = bisect(self._values, value)
+            exists = False
+
+        if exists:
+            self._values[index] = value
+        else:
+            self._values.insert(index, value)
+            self._keys.insert(index, key)
+
         if self._internal_mapping is not None:
             self._internal_mapping[key] = value
 
