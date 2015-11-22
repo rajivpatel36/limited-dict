@@ -50,7 +50,8 @@ class LimitedDict(MutableMapping):
         index = bisect(self._keys, key) - 1
         del self._keys[index]
         del self._values[index]
-        del self._internal_mapping[key]
+        if self._internal_mapping is not None:
+            del self._internal_mapping[key]
         self._at_max_length = False
 
     def __iter__(self):
