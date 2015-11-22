@@ -37,11 +37,14 @@ class LimitedDict(MutableMapping):
                 self._at_max_length = True
 
     def __getitem__(self, key):
-        if self._internal_mapping is not None:
-            return self._internal_mapping[key]
-        else:
-            index = self._keys.index(key)
-            return self._values[index]
+        try:
+            if self._internal_mapping is not None:
+                return self._internal_mapping[key]
+            else:
+                index = self._keys.index(key)
+                return self._values[index]
+        except:
+            raise KeyError(key)
 
     def __delitem__(self, key):
         index = bisect(self._keys, key) - 1
