@@ -40,7 +40,7 @@ class LimitedDict(MutableMapping):
         if self._internal_mapping is not None:
             return self._internal_mapping[key]
         else:
-            index = bisect(self._keys, key) - 1
+            index = self._keys.index(key)
             return self._values[index]
 
     def __delitem__(self, key):
