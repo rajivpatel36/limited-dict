@@ -60,4 +60,4 @@ class LimitedDict(MutableMapping):
         return len(self._keys)
 
     def __repr__(self):
-        return zip(self._keys, self._values).__str__()
+        return zip(self._keys, self._values).__repr__()
