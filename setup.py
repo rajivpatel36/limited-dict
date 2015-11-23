@@ -1,7 +1,7 @@
 from distutils.core import setup
 setup(
-  name = 'limited-dict',
-  packages = ['limited-dict'], # this must be the same as the name above
+  name = 'limited_dict',
+  packages = ['limited_dict'], # this must be the same as the name above
   version = '0.1',
   description = 'A dictionary-like object which only stores the highest or lowest N values',
   author = 'Rajiv Patel',
