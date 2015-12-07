@@ -29,7 +29,7 @@ The arguments are:
 * ``cache_mapping`` (optional):
     If this is ``True`` the mapping between keys and values is stored in a more efficient way. This improves performance at the expense of greater memory usage.
 
-* ``reverse_order``
+* ``reverse_order`` (optional):
     If this is ``False`` the elements with the lowest  ``max_length`` values are maintained. If this is ``True`` the elements with the highest ``max_length`` values are maintained.
 
 The ``LimitedDict`` class can then be used like a ``dict``:
