@@ -61,7 +61,7 @@ It only stores ``max_length`` elements so some elements previously specified may
 
 You can iterate over keys and values in the same way as a dict:
 
-... code:: bash
+.. code:: bash
 
    >>> for key, value in my_dict.items():
    ...    print("{key}:{value}".format(key=key, value=value))
