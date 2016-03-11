@@ -8,7 +8,6 @@ class LimitedDict(MutableMapping):
         self._values = list()
         self._internal_mapping = dict() if cache_mapping else None
         self._max_length = max_length
-        self._at_max_length = False
         self._index_to_remove = 0 if reverse_order else max_length
 
     def __setitem__(self, key, value):
@@ -28,14 +27,11 @@ class LimitedDict(MutableMapping):
         if self._internal_mapping is not None:
             self._internal_mapping[key] = value
 
-        if self._at_max_length:
+        if len(self._keys) > self._max_length:
             if self._internal_mapping is not None:
                 del self._internal_mapping[self._keys[self._index_to_remove]]
             del self._keys[self._index_to_remove]
             del self._values[self._index_to_remove]
-        else:
-            if len(self._keys) == self._max_length:
-                self._at_max_length = True
 
     def __getitem__(self, key):
         try:
